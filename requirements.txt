@@ -1,0 +1,7 @@
+flask~=3.1.0
+flask-smorest
+marshmallow~=3.23.3
+sqlalchemy~=2.0.36
+flask-sqlalchemy
+alembic~=1.14.0
+flask-migrate~=4.0.7
