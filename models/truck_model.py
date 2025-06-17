@@ -9,7 +9,6 @@ class TruckModel(db.Model):
     renavam = db.Column(db.String(11), unique=True, nullable=False)
     plate = db.Column(db.String(20), unique=True, nullable=False)
     model = db.Column(db.String, nullable=False)
-    brand = db.Column(db.String, nullable=False)
     year = db.Column(db.Integer, nullable=False)
     description = db.Column(db.String(100), nullable=True)
     
