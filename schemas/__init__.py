@@ -1,1 +1,2 @@
-from .driver_schema import DriverSchema
+from schemas.driver_schema import DriverSchema
+from schemas.truck_schema import TruckSchema
