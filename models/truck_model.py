@@ -14,3 +14,5 @@ class TruckModel(db.Model):
     
     created_at = db.Column(db.DateTime(timezone=True), default=datetime.now(timezone.utc), nullable=False)
     updated_at = db.Column(db.DateTime(timezone=True), default=datetime.now(timezone.utc), onupdate=datetime.now(timezone.utc), nullable=False)
+
+    trips = db.relationship("TripModel", back_populates=__tablename__, cascade="all, delete-orphan")
