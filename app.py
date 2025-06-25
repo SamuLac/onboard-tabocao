@@ -7,7 +7,7 @@ from marshmallow.schema import BaseSchema
 
 from db import db
 
-from resources import DriverBlueprint, TruckBlueprint, TripBlueprint
+from resources import DriverBlueprint, TruckBlueprint, TripBlueprint, IndicatorsBlueprint
 
 
 def create_app(db_url=None):
@@ -29,6 +29,7 @@ def create_app(db_url=None):
     api.register_blueprint(DriverBlueprint)
     api.register_blueprint(TruckBlueprint)
     api.register_blueprint(TripBlueprint)
+    api.register_blueprint(IndicatorsBlueprint)
     
     return app
 
