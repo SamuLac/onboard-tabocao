@@ -1,6 +1,11 @@
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
-from sync import sync_data  
+from sync import sync_data 
+
+from schemas import ExternalDataSchema
+from models import ExternalDataModel
+
+from db import db
 
 blp = Blueprint(
     'ExternalSync', 
@@ -8,7 +13,19 @@ blp = Blueprint(
     description='Aciona manualmente a sincronização de dados de APIs externas'
 )
 
-@blp.route('/external/<int:pet_id>')
+@blp.route('/external')
+class ExternalDataList(MethodView):
+    @blp.response(200, ExternalDataSchema(many=True))
+    def get(self):
+        return ExternalDataModel.query.all()
+
+@blp.route('/external/<int:data_id>')
+class ExternalData(MethodView):
+    @blp.response(200, ExternalDataSchema)
+    def get(self, data_id):
+        return db.get_or_404(ExternalDataModel, data_id)
+
+@blp.route('/external/sync/<int:pet_id>')
 class ExternalSyncTrigger(MethodView):
     def post(self, pet_id):
         try:
