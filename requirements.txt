@@ -5,3 +5,4 @@ sqlalchemy~=2.0.36
 flask-sqlalchemy
 alembic~=1.14.0
 flask-migrate~=4.0.7
+requests
