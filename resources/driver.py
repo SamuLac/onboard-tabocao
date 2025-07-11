@@ -4,6 +4,7 @@ from sqlalchemy.exc import IntegrityError
 
 from schemas import DriverSchema
 from models import DriverModel
+from services import auth_required
 
 from db import db
 
@@ -42,11 +43,13 @@ class DriverList(MethodView):
 @blp.route("/driver/<int:driver_id>")
 class Driver(MethodView):
     @blp.response(200, DriverSchema)
+    @auth_required()
     def get(self, driver_id):
         driver = db.get_or_404(DriverModel, driver_id)
         return driver
 
     @blp.response(204)
+    @auth_required(required_roles=["admin"])
     def delete(self, driver_id):
         driver = db.get_or_404(DriverModel, driver_id)
         try:
