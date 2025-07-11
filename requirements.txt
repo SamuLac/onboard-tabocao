@@ -8,3 +8,4 @@ flask-migrate~=4.0.7
 requests
 psycopg2-binary
 python-dotenv
+clerk-backend-api~=2.2.0
