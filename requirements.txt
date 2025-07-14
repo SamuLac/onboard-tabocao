@@ -9,3 +9,4 @@ requests
 psycopg2-binary
 python-dotenv
 clerk-backend-api~=2.2.0
+pytest>=7.0.0
